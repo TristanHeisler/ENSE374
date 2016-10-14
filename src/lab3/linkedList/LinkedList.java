@@ -195,4 +195,38 @@ public class LinkedList
 			System.out.println();
 		}
 	}
+
+	//Print the list from its head
+ 	public void printLinkedListTail()
+ 	{
+ 		//If the list is empty, inform the user
+		if(head == null)
+		{
+			System.out.println("The list is currently empty.");
+		}
+		
+		//Otherwise, print the list in order from its tail
+		else
+		{
+			//Create an list iterator
+			ListElement current = new ListElement();
+			current = tail;
+			
+			//Output information
+			System.out.print("\nPrinting the linked list from the tail:\n\t");
+			
+			//Iterate to the start of the list
+			do
+			{
+				//Print the information at the current node
+				System.out.print(current.getData() + " ");
+				
+				//Move to the next node in the list
+				current = current.getPrevious();
+			}while(current != null);
+			
+			//Output a new line
+			System.out.println();
+		}
+ 	}
 }

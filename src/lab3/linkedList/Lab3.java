@@ -29,7 +29,8 @@ public class Lab3
 			+ "|\t2. Retrieve a node from the list by its index |\n"
 			+ "|\t3. Delete a node from the list by its index   |\n"
 			+ "|\t4. Print the linked list from its head        |\n"
-			+ "|\t5. Exit the program                           |\n"
+			+ "|\t5. Print the linked list from its tail        |\n"
+			+ "|\t6. Exit the program                           |\n"
 			+ "\\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~/\n\n");
 		
 		//Create a loop that will run until the user enters a valid choice
@@ -49,6 +50,7 @@ public class Lab3
 				case '3':
 				case '4':
 				case '5':
+				case '6':
 					validChoice = true;
 					break;
 				//If the given choice is not permitted, inform the user and prompt them again
@@ -152,8 +154,13 @@ public class Lab3
 					list.printLinkedListHead();
 					break;
 					
-				//Exit the program	
+				//Print the list from its tail
 				case '5':
+					list.printLinkedListTail();
+					break;
+					
+				//Exit the program	
+				case '6':
 					System.out.println("Goodbye!");
 					anotherSelection = false;
 					break;
