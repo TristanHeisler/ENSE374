@@ -50,7 +50,10 @@ public class LinkedList
 			
 			//Increment the number of nodes in the list
 			maxIndex++;
-		}		
+		}			
+
+		//Inform the user that the node was added
+		System.out.println("The value was successfully added to the linked list.");
 	}
 
 	//Retrieve an element
@@ -62,11 +65,12 @@ public class LinkedList
 			System.out.println("The list is currently empty.");
 		}
 		
-		//If the desired index is not present in the list, return null
+		//If the desired index is not present in the list, inform the user
 		else if(index > maxIndex || index < 0)
 		{
 			System.out.println("The given index lies outside of the bounds of the list.");
 		}
+		
 		//Otherwise, iterate to the desired node and return it
 		else
 		{
@@ -85,8 +89,56 @@ public class LinkedList
 		}
 	}
 	
+	//Delete an element
+	public void deleteElement(int index)
+	{
+		//If the list is empty, inform the user
+		if(head == null)
+		{
+			System.out.println("The list is currently empty.");
+		}
+		
+		//If the desired index is not present in the list, inform the user
+		else if(index > maxIndex || index < 0)
+		{
+			System.out.println("The given index lies outside of the bounds of the list.");
+		}
+		
+		//Otherwise, delete the desired node
+		else
+		{
+			//Handle the case of deleting the head of the list
+			if(index == 0)
+			{
+				head = head.getNext();
+			}
+			
+			else
+			{
+				//Create an list iterator
+				ListElement current = new ListElement();
+				current = head;
+				
+				//Iterate to the node before the one to be deleted
+				for(int i = 1; i < index; i++)
+				{
+					current = current.getNext();
+				}			
+				
+				//Link the previous node to the next node
+				current.setNext(current.getNext().getNext());
+			}
+			
+			//Decrement the number of nodes in the list
+			maxIndex--;
+			
+			//Inform the user that the node was deleted
+			System.out.println("The value was successfully deleted from the linked list.");
+		}
+	}
+	
 	//Print the list from its head
-	public void printLinkedListHead()
+ 	public void printLinkedListHead()
 	{
 		//If the list is empty, inform the user
 		if(head == null)

@@ -127,9 +127,6 @@ public class Lab3
 					
 					//Add the new element to the list
 					list.addElement(newElement);
-					
-					//Inform the user that the node was added
-					System.out.println("The value was successfully added to the linked list.");
 					break;
 					
 				//Retrieve a node from the list					
@@ -143,7 +140,11 @@ public class Lab3
 					
 				//Delete a node from the list	
 				case '3':
-					System.out.print("Delete a node!\n\n");
+					//Obtain the desired deletion index
+					nodeIndex = getIntegerInput("index of the node you would like to delete: ");
+					
+					//Output the value stored at the given index
+					list.deleteElement(nodeIndex);
 					break;
 					
 				//Print the list from its head
