@@ -106,7 +106,7 @@ public class Lab3
 		boolean anotherSelection = true;
 		
 		//Welcome the user to the program
-		System.out.print("Welcome! This program allows you to manage a Singly Linked List.\n");
+		System.out.println("Welcome! This program allows you to manage a Singly Linked List.");
 				
 		//Create a loop that will allow the user to interact with the list for as long as they desire
 		do
@@ -129,12 +129,16 @@ public class Lab3
 					list.addElement(newElement);
 					
 					//Inform the user that the node was added
-					System.out.print("The value was successfully added to the linked list.\n");
+					System.out.println("The value was successfully added to the linked list.");
 					break;
 					
 				//Retrieve a node from the list					
 				case '2':
-					System.out.print("Retrieve a node!\n\n");
+					//Obtain the desired retrieval index
+					nodeIndex = getIntegerInput("index of the node you would like to retrieve: ");
+					
+					//Output the value stored at the given index
+					list.getElement(nodeIndex);
 					break;
 					
 				//Delete a node from the list	
@@ -149,7 +153,7 @@ public class Lab3
 					
 				//Exit the program	
 				case '5':
-					System.out.print("Goodbye!\n\n");
+					System.out.println("Goodbye!");
 					anotherSelection = false;
 					break;
 			}	
