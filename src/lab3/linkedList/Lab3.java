@@ -12,7 +12,8 @@
 package lab3.linkedList;
 import java.util.Scanner;
 
-public class Lab3 {
+public class Lab3 
+{
 	public static char getMenuChoice()
 	{
 		//Declaring local variables
@@ -22,7 +23,7 @@ public class Lab3 {
 		boolean validChoice = false;
 
 		//Present the possible choices to the user in a menu
-		System.out.print("/~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\\\n"
+		System.out.print("\n/~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\\\n"
 			+ "|Please indicate what you would like to do next:      |\n"
 			+ "|\t1. Add a node to the list                     |\n"
 			+ "|\t2. Retrieve a node from the list by its index |\n"
@@ -61,14 +62,51 @@ public class Lab3 {
 		return choice;
 	}
 	
+	public static int getIntegerInput(String promptMessage)
+	{
+		//Declaring local variables
+		Scanner in = new Scanner(System.in);
+		String inputString;
+		int integer = 0;
+		boolean validChoice = false;
+		
+		//Create a loop to obtain a valid integer value
+		do
+		{
+			//Prompt the user and store their input
+			System.out.print("Please enter the " + promptMessage);
+			inputString = in.nextLine();
+						
+			try
+			{
+				//Try to convert the string to an integer
+				integer = Integer.parseInt(inputString);
+				
+				//If no exception was thrown, exit the loop
+				validChoice = true;
+			}
+			catch(NumberFormatException ex)
+			{
+				//If the input cannot be expressed as an integer, inform the user and prompt them again
+				System.out.print("Invalid input. ");
+			}	
+		}while(!validChoice);
+		
+		//Return the valid result
+		return integer;
+	}
+	
 	public static void main(String[] args) 
 	{
 		//Declaring local variables
 		char menuChoice;
+		LinkedList list = new LinkedList();
+		int nodeValue;
+		int nodeIndex;
 		boolean anotherSelection = true;
 		
 		//Welcome the user to the program
-		System.out.print("Welcome! This program allows you to manage a Singly Linked List.\n\n");
+		System.out.print("Welcome! This program allows you to manage a Singly Linked List.\n");
 				
 		//Create a loop that will allow the user to interact with the list for as long as they desire
 		do
@@ -81,7 +119,17 @@ public class Lab3 {
 			{
 				//Add a node to the list
 				case '1':
-					System.out.print("Add a node!\n\n");
+					//Obtain a value to add to the list
+					nodeValue = getIntegerInput("value you would like to add to the list: ");
+					
+					//Create a new list element using the integer
+					ListElement newElement = new ListElement(nodeValue);
+					
+					//Add the new element to the list
+					list.addElement(newElement);
+					
+					//Inform the user that the node was added
+					System.out.print("The value was successfully added to the linked list.\n");
 					break;
 					
 				//Retrieve a node from the list					
@@ -96,7 +144,7 @@ public class Lab3 {
 					
 				//Print the list from its head
 				case '4':
-					System.out.print("Print the list!\n\n");
+					list.printLinkedListHead();
 					break;
 					
 				//Exit the program	

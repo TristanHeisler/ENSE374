@@ -23,6 +23,13 @@ public class ListElement {
 		this.next = null;
 	}
 	
+	//Initializing constructor
+	public ListElement(int initialData)
+	{
+		this.data = initialData;
+		this.next = null;
+	}
+	
 	//Setter for data
 	public void setData(int newData)
 	{
