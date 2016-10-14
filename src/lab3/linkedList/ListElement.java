@@ -12,5 +12,38 @@
 package lab3.linkedList;
 
 public class ListElement {
-
+	//Private variables
+	private int data;
+	private ListElement next;
+	
+	//Default constructor
+	public ListElement()
+	{
+		this.data = 0;
+		this.next = null;
+	}
+	
+	//Setter for data
+	public void setData(int newData)
+	{
+		this.data = newData;
+	}
+	
+	//Getter for data
+	public int getData()
+	{
+		return this.data;
+	}
+	
+	//Setter for next
+	public void setNext(ListElement newNext)
+	{
+		this.next = newNext;
+	}
+	
+	//Getter for next
+	public ListElement getNext()
+	{
+		return this.next;		
+	}
 }
