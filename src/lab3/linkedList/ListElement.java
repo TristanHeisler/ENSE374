@@ -13,14 +13,16 @@ package lab3.linkedList;
 
 public class ListElement {
 	//Private variables
-	private int data;
+	private int data;	
 	private ListElement next;
+	private ListElement previous;
 	
 	//Default constructor
 	public ListElement()
 	{
-		this.data = 0;
+		this.data = 0;		
 		this.next = null;
+		this.previous = null;
 	}
 	
 	//Initializing constructor
@@ -28,6 +30,7 @@ public class ListElement {
 	{
 		this.data = initialData;
 		this.next = null;
+		this.previous = null;
 	}
 	
 	//Setter for data
