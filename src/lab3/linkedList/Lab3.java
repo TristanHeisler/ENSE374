@@ -106,7 +106,7 @@ public class Lab3
 		boolean anotherSelection = true;
 		
 		//Welcome the user to the program
-		System.out.println("Welcome! This program allows you to manage a Singly Linked List.");
+		System.out.println("Welcome! This program allows you to manage a Doubly Linked List.");
 				
 		//Create a loop that will allow the user to interact with the list for as long as they desire
 		do

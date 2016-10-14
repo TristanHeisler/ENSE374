@@ -105,11 +105,34 @@ public class LinkedList
 		
 		//Otherwise, delete the desired node
 		else
-		{
-			//Handle the case of deleting the head of the list
-			if(index == 0)
+		{					
+			//Handle the case of deleting the only node in the list
+			if(head == tail)
 			{
+				head = null;
+				tail = null;
+			}
+			
+			//Handle the case of deleting the head of the list
+			else if(index == 0)
+			{
+				//Move the head to the next position and nullify its previous link
 				head = head.getNext();
+				head.setPrevious(null);
+				
+				//Decrement the number of nodes in the list
+				maxIndex--;
+			}
+			
+			//Handle the case of deleting the tail of the list
+			else if(index == maxIndex)
+			{
+				//Move the tail to the previous position and nullify its next link
+				tail = tail.getPrevious();
+				tail.setNext(null);
+
+				//Decrement the number of nodes in the list
+				maxIndex--;
 			}
 			
 			else
@@ -118,19 +141,22 @@ public class LinkedList
 				ListElement current = new ListElement();
 				current = head;
 				
-				//Iterate to the node before the one to be deleted
-				for(int i = 1; i < index; i++)
+				//Iterate to the node to be deleted
+				for(int i = 0; i < index; i++)
 				{
 					current = current.getNext();
 				}			
 				
 				//Link the previous node to the next node
-				current.setNext(current.getNext().getNext());
+				current.getPrevious().setNext(current.getNext());
+				
+				//Link the next node to the previous node
+				current.getNext().setPrevious(current.getPrevious());
+
+				//Decrement the number of nodes in the list
+				maxIndex--;
 			}
-			
-			//Decrement the number of nodes in the list
-			maxIndex--;
-			
+						
 			//Inform the user that the node was deleted
 			System.out.println("The value was successfully deleted from the linked list.");
 		}
