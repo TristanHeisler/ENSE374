@@ -3,7 +3,7 @@
 *
 * DESCRIPTION:
 * This file maintains the information required to maintain a linked list. Users can add a node to the list,
-* search for a node, delete a node and print the list from its head.
+* search for a node, delete a node and print the list from its head or from its tail.
 *
 * AUTHOR: Tristan Heisler 200351317
 */
@@ -14,12 +14,14 @@ public class LinkedList
 {
 	//Private variables
 	private ListElement head;
+	private ListElement tail;
 	private int maxIndex;
 	
 	//Default constructor
 	public LinkedList()
 	{
 		head = null;
+		tail = null;
 		maxIndex = 0;
 	}
 	
@@ -30,23 +32,20 @@ public class LinkedList
 		if(head == null)
 		{
 			head = new ListElement(newElement.getData());
+			tail = head;
 		}
 		
 		//Otherwise, add the element to the end of the list
 		else
-		{		
-			//Create an list iterator
-			ListElement current = new ListElement();
-			current = head;
+		{	
+			//Attach the element at the end
+			tail.setNext(newElement);
 			
-			//Iterate to the end of the list
-			while(current.getNext() != null)
-			{
-				current = current.getNext();
-			}
+			//Link the new tail to the previous tail
+			tail.getNext().setPrevious(tail);
 			
-			//Attach the element to the end of the list
-			current.setNext(newElement);
+			//Move the tail to the end of the list
+			tail = tail.getNext();		
 			
 			//Increment the number of nodes in the list
 			maxIndex++;

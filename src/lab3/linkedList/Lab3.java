@@ -4,7 +4,7 @@
 * DESCRIPTION:
 * This file is the main file for the ENSE 374 Lab 3 assignment in the Fall 2016
 * semester at the University of Regina. By following the provided prompts, the user is 
-* able to manipulate the nodes in a singly linked list.
+* able to manipulate the nodes in a doubly linked list.
 *
 * AUTHOR: Tristan Heisler 200351317
 */
