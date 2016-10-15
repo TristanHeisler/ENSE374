@@ -14,10 +14,18 @@ import java.util.Scanner;
 
 public class Lab3 
 {
-	public static char getMenuChoice()
+	public Scanner input;
+	
+	//Default constructor to open a Scanner object
+	public Lab3()
+	{
+		input = new Scanner(System.in);
+	}
+
+	//Function for obtaining a valid character menu choice
+	public char getMenuChoice()
 	{
 		//Declaring local variables
-		Scanner menu = new Scanner(System.in);
 		String inputString;
 		char choice;
 		boolean validChoice = false;
@@ -38,7 +46,7 @@ public class Lab3
 		{
 			//Obtain the first character of the input string and ignore the rest of the string
 			System.out.print("Please enter your selection: ");
-			inputString = menu.nextLine();
+			inputString = input.nextLine();
 			choice = inputString.charAt(0);	
 			
 			//Evaluate the choice that was made
@@ -64,10 +72,10 @@ public class Lab3
 		return choice;
 	}
 	
-	public static int getIntegerInput(String promptMessage)
+	//Function for obtaining a valid integer
+	public int getIntegerInput(String promptMessage)
 	{
 		//Declaring local variables
-		Scanner in = new Scanner(System.in);
 		String inputString;
 		int integer = 0;
 		boolean validChoice = false;
@@ -77,7 +85,7 @@ public class Lab3
 		{
 			//Prompt the user and store their input
 			System.out.print("Please enter the " + promptMessage);
-			inputString = in.nextLine();
+			inputString = input.nextLine();
 						
 			try
 			{
@@ -98,9 +106,11 @@ public class Lab3
 		return integer;
 	}
 	
+	//Main function
 	public static void main(String[] args) 
 	{
 		//Declaring local variables
+		Lab3 function = new Lab3();
 		char menuChoice;
 		LinkedList list = new LinkedList();
 		int nodeValue;
@@ -114,7 +124,7 @@ public class Lab3
 		do
 		{		
 			//Display a menu and obtain a valid selection from the user
-			menuChoice = getMenuChoice();
+			menuChoice = function.getMenuChoice();
 		
 			//Call the appropriate function based on the user's response
 			switch(menuChoice)
@@ -122,7 +132,7 @@ public class Lab3
 				//Add a node to the list
 				case '1':
 					//Obtain a value to add to the list
-					nodeValue = getIntegerInput("value you would like to add to the list: ");
+					nodeValue = function.getIntegerInput("value you would like to add to the list: ");
 					
 					//Create a new list element using the integer
 					ListElement newElement = new ListElement(nodeValue);
@@ -134,7 +144,7 @@ public class Lab3
 				//Retrieve a node from the list					
 				case '2':
 					//Obtain the desired retrieval index
-					nodeIndex = getIntegerInput("index of the node you would like to retrieve: ");
+					nodeIndex = function.getIntegerInput("index of the node you would like to retrieve: ");
 					
 					//Output the value stored at the given index
 					list.getElement(nodeIndex);
@@ -143,7 +153,7 @@ public class Lab3
 				//Delete a node from the list	
 				case '3':
 					//Obtain the desired deletion index
-					nodeIndex = getIntegerInput("index of the node you would like to delete: ");
+					nodeIndex = function.getIntegerInput("index of the node you would like to delete: ");
 					
 					//Output the value stored at the given index
 					list.deleteElement(nodeIndex);
